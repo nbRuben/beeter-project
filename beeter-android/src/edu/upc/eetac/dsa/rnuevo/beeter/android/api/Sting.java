@@ -1,22 +1,10 @@
-package edu.upc.eetac.dsa.rnuevo.beeter.api.model;
+package edu.upc.eetac.dsa.rnuevo.beeter.android.api;
 
-import java.util.List;
-
-import javax.ws.rs.core.Link;
-
-import org.glassfish.jersey.linking.Binding;
-import org.glassfish.jersey.linking.InjectLink;
-import org.glassfish.jersey.linking.InjectLink.Style;
-import org.glassfish.jersey.linking.InjectLinks;
-
-import edu.upc.eetac.dsa.rnuevo.beeter.api.MediaType;
-import edu.upc.eetac.dsa.rnuevo.beeter.api.StingResource;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sting {
-	@InjectLinks({
-		@InjectLink(resource = StingResource.class, style = Style.ABSOLUTE, rel = "stings", title = "Latest stings", type = MediaType.BEETER_API_STING_COLLECTION),
-		@InjectLink(resource = StingResource.class, style = Style.ABSOLUTE, rel = "self edit", title = "Sting", type = MediaType.BEETER_API_STING, method = "getSting", bindings = @Binding(name = "stingid", value = "${instance.id}")) })
-	private List<Link> links;
+	private Map<String, Link> links = new HashMap<>();
 	private String id;
 	private String username;
 	private String author;
@@ -72,11 +60,7 @@ public class Sting {
 		this.lastModified = lastModified;
 	}
 
-	public List<Link> getLinks() {
+	public Map<String, Link> getLinks() {
 		return links;
-	}
-
-	public void setLinks(List<Link> links) {
-		this.links = links;
 	}
 }
