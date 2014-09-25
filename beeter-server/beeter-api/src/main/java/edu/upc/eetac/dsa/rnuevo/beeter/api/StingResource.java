@@ -41,7 +41,7 @@ public class StingResource {
 	@Produces(MediaType.BEETER_API_STING_COLLECTION)
 	public StingCollection getStings(@QueryParam("length") int length,
 			@QueryParam("before") long before, @QueryParam("after") long after) {
-		StingCollection stings = new StingCollection();
+		//StingCollection stings = new StingCollection();
 
 		Connection conn = null;
 		try {
